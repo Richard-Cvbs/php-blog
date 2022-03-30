@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand lead fs-3" href="#">Blogger</a>
+    <a class="navbar-brand lead fs-3" href="index.php">Blogger</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,11 +23,11 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav justify-content-evenly flex-grow-1">
         <li class="nav-item">
-          <a class="nav-link lead fw-bold" href="#">All Blogs
+          <a class="nav-link lead fw-bold" href="index.php">All Blogs
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link lead fw-bold" href="#">Add New Blog!</a>
+          <a class="nav-link lead fw-bold" href="new_blog.php">Add New Blog!</a>
         </li>
         <li class="nav-item">
           <a class="nav-link lead fw-bold" href="#">About</a>
