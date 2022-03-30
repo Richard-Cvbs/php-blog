@@ -1,5 +1,12 @@
 <?php include('inc/header.php')?>
+<?php
+    $title = $description = $author = $body ='';
+    $titleErr = $descriptionErr = $authorErr = $bodyErr ='';
 
+    if(isset(INPUT_POST)){
+
+    }
+?>
 
 <div class="container">
     <form id="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mt-4 w-75">
@@ -17,11 +24,11 @@
             <input type="text" class="form-control" id="author" name="author" placeholder="Take credit!">
           </div>
           <div class="mb-3">
-            <label for="body" class="form-label">Feedback</label>
+            <label for="body" class="form-label">Body</label>
             <textarea class="form-control" id="body" name="body" placeholder="What are your thoughts today?"></textarea>
           </div>
           <div class="mb-3">
-            <input type="submit" name="submit" value="submit" class="btn btn-dark w-100">
+            <input type="submit" name="submit" value="Submit" class="btn btn-dark w-100">
           </div>
         </form>
 </div>
