@@ -1,3 +1,4 @@
+<?php include('config/root.php')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
