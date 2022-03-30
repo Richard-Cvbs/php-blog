@@ -22,7 +22,7 @@
         <div class="card-body">
             <h4 class="card-subtitle text-muted">
             <?php
-        echo $blog['description']
+        echo $blog['summary']
         ?>
             </h4>
         </div>

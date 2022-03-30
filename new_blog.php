@@ -1,8 +1,8 @@
 <?php include('inc/header.php')?>
 <?php
     //variables
-    $title = $description = $author = $body ='';
-    $titleErr = $descriptionErr = $authorErr = $bodyErr ='';
+    $title = $summary = $author = $body ='';
+    $titleErr = $summaryErr = $authorErr = $bodyErr ='';
     // if submitted
     if(isset($_POST['submit'])){
         if(empty($_POST['title'])){
@@ -12,12 +12,12 @@
             //Sanitize
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         }
-        if(empty($_POST['description'])){
-            //if no description
-            $descriptionErr = 'Description is required';
+        if(empty($_POST['summary'])){
+            //if no summary
+            $summaryErr = 'summary is required';
         } else {
             //Sanitize
-            $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $summary = filter_input(INPUT_POST, 'summary', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         }
         if(empty($_POST['author'])){
             //if no author
@@ -33,6 +33,15 @@
             //Sanitize
             $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         }
+        if(empty($titleErr) && empty($summaryErr) && empty($authorErr) && empty($bodyErr)){
+            $sql = "INSERT INTO blogs (title, summary, author, body) VALUES ('$title','$summary','$author','$body')";
+            if(mysqli_query($conn, $sql)){
+                //Success
+                header('Location: index.php');
+            } else {
+                echo 'Error: '. mysqli_error($conn);
+            };
+        };
     }
 ?>
 
@@ -41,28 +50,28 @@
             <label class="h2 mb-3" for="form">Create a New Blog!</label>
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control <?php echo ($titleErr) ? 'is-invalid' : null ; ?>" id="title" name="title" placeholder="New blog title">
+            <input value="<?php echo ($title) ? $title : null; ?>" type="text" class="form-control <?php echo ($titleErr) ? 'is-invalid' : null ; ?>" id="title" name="title" placeholder="New blog title">
             <div class="invalid-feedback">
                 <?php echo $titleErr ?>
             </div>
           </div>
           <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control <?php echo ($descriptionErr) ? 'is-invalid' : null ; ?>" id="description" name="description" placeholder="Enter a short description">
+            <label for="summary" class="form-label">Summary</label>
+            <input value="<?php echo ($summary) ? $summary : null; ?>" type="text" class="form-control <?php echo ($summaryErr) ? 'is-invalid' : null ; ?>" id="summary" name="summary" placeholder="Enter a short summary">
             <div class="invalid-feedback">
-                <?php echo $descriptionErr ?>
+                <?php echo $summaryErr ?>
             </div>
           </div>
           <div class="mb-3">
             <label for="author" class="form-label">Author</label>
-            <input type="text" class="form-control <?php echo ($authorErr) ? 'is-invalid' : null ; ?>" id="author" name="author" placeholder="Take credit!">
+            <input value="<?php echo ($author) ? $author : null; ?>" type="text" class="form-control <?php echo ($authorErr) ? 'is-invalid' : null ; ?>" id="author" name="author" placeholder="Take credit!">
             <div class="invalid-feedback">
                 <?php echo $authorErr ?>
             </div>
           </div>
           <div class="mb-3">
             <label for="body" class="form-label">Body</label>
-            <textarea class="form-control <?php echo ($bodyErr) ? 'is-invalid' : null ; ?>" id="body" name="body" placeholder="What are your thoughts today?"></textarea>
+            <textarea class="form-control <?php echo ($bodyErr) ? 'is-invalid' : null ; ?>" id="body" name="body" placeholder="What are your thoughts today?"><?php echo ($body) ? $body : null; ?></textarea>
             <div class="invalid-feedback">
                 <?php echo $bodyErr ?>
             </div>
