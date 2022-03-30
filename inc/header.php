@@ -20,7 +20,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav me-auto justify-content-evenly flex-grow-1">
+      <ul class="navbar-nav justify-content-evenly flex-grow-1">
         <li class="nav-item">
           <a class="nav-link lead fw-bold" href="#">All Blogs
           </a>
