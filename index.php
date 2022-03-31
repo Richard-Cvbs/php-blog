@@ -43,4 +43,5 @@
     </div>
         <?php endforeach; ?>
 </div>
+<div class="my-5 p-1"></div>
 <?php include('inc/footer.php')?>

@@ -30,7 +30,7 @@
           <a class="nav-link lead fw-bold" href="new_blog.php">Add New Blog!</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link lead fw-bold" href="#">About</a>
+          <a class="nav-link lead fw-bold" href="about.php">About</a>
         </li>
       </ul>
     </div>
