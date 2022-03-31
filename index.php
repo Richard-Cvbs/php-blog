@@ -3,6 +3,17 @@
     $sql = 'SELECT * FROM blogs ORDER BY time DESC';
     $result = mysqli_query($conn, $sql);
     $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    if(isset($_POST['submit'])){
+        $postToDelete = $_POST['delete_id'];
+        $sql = "DELETE FROM blogs WHERE id = {$postToDelete}";
+        if(mysqli_query($conn, $sql)){
+            //Success
+            header('Location: index.php');
+        } else {
+            echo 'Error: '. mysqli_error($conn);
+        };
+    };
     ?>
 <div class="container">
         <?php if(!$blogs):?>
@@ -37,7 +48,10 @@
         </h3></li>
         <li class="list-group-item">
             <a class="btn btn-warning" href="edit.php?id=<?php echo $blog['id'];?>">Edit</a>
-            <a class="btn btn-danger" href="#">Delete</a>
+            <form class="d-inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                <button class="btn btn-danger ms-3" name="submit" type="submit">Delete</button>
+                <input type="text" class="invisible" name='delete_id' value="<?php echo $blog['id'] ?>">
+            </form>
         </li>
          </ul>
     </div>
