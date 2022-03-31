@@ -1,7 +1,8 @@
 <?php include('inc/header.php')?>
 <?php
-    
-    // get ID
+    // If GET
+    if (isset($_GET['id'])){
+        // get ID
     $id = mysqli_real_escape_string($conn, $_GET['id']);
     // Query
     $sqlQuery= 'SELECT * FROM blogs WHERE id = '.$id;
@@ -10,11 +11,13 @@
     // Fetch
     $post = mysqli_fetch_assoc($result);
     //variables
+    $update_id = $post['id'];
     $title = $post['title'];
     $summary = $post['summary'];
     $author = $post['author'];
     $body = $post['body'];
-    $titleErr = $summaryErr = $authorErr = $bodyErr ='';
+    $titleErr = $summaryErr = $authorErr = $bodyErr ='';}
+
     // if submitted
     if(isset($_POST['submit'])){
         if(empty($_POST['title'])){
@@ -45,8 +48,15 @@
             //Sanitize
             $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         }
+
         if(empty($titleErr) && empty($summaryErr) && empty($authorErr) && empty($bodyErr)){
-            $sql = "INSERT INTO blogs (title, summary, author, body) VALUES ('$title','$summary','$author','$body')";
+            $update_id = $_POST['update_id'];
+            $sql = "UPDATE blogs SET
+            title = '$title',
+            summary = '$summary',
+            author = '$author',
+            body = '$body'
+            WHERE id = {$update_id}";
             if(mysqli_query($conn, $sql)){
                 //Success
                 header('Location: index.php');
@@ -88,6 +98,7 @@
                 <?php echo $bodyErr ?>
             </div>
           </div>
+          <input type="text" class="invisible" name='update_id' value="<?php echo $update_id ?>">
           <div class="mb-3">
             <input type="submit" name="submit" value="Submit" class="btn btn-dark w-100">
           </div>

@@ -2,7 +2,7 @@
 <?php 
     $sql = 'SELECT * FROM blogs ORDER BY time DESC';
     $result = mysqli_query($conn, $sql);
-    $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC)
+    $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
     ?>
 <div class="container">
         <?php if(!$blogs):?>
