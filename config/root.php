@@ -5,11 +5,11 @@
     define ('DB_PASS', '123456');
     define ('DB_NAME', 'php_dev'); */
 
-    define ('DB_HOST', 'db4free.net');
-    define ('DB_USER', 'richard_mgmt');
-    define ('DB_PASS', 'kpUN3zabb9U2BwH');
-    define ('DB_NAME', 'personal_data');
-    define ('DB_PORT', '3306');
+    define ('DB_HOST', $_ENV['DB_HOST']);
+    define ('DB_USER', $_ENV['DB_USER']);
+    define ('DB_PASS', $_ENV['DB_PASS']);
+    define ('DB_NAME', $_ENV['DB_NAME']);
+    define ('DB_PORT', $_ENV['DB_PORT']);
     //Connect
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME,DB_PORT);
 
