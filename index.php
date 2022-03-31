@@ -1,6 +1,6 @@
 <?php include('inc/header.php')?>
 <?php 
-    $sql = 'SELECT * FROM blogs';
+    $sql = 'SELECT * FROM blogs ORDER BY time DESC';
     $result = mysqli_query($conn, $sql);
     $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC)
     ?>
@@ -36,7 +36,7 @@
         ?>
         </h3></li>
         <li class="list-group-item">
-            <a class="btn btn-warning" href="#">Edit</a>
+            <a class="btn btn-warning" href="edit.php?id=<?php echo $blog['id'];?>">Edit</a>
             <a class="btn btn-danger" href="#">Delete</a>
         </li>
          </ul>
